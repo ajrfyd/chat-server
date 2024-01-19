@@ -1,0 +1,6 @@
+import path from "path";
+
+module.exports = {
+  config: path.resolve("/src/config/config.js"),
+  "seeders-path": path.resolve("/src/seeders")
+}
