@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "ajrfyd",
   "license": "ISC",
   "type": "module",
   "dependencies": {
@@ -20,6 +20,7 @@
     "fxjs": "^0.21.3",
     "mysql2": "^3.7.1",
     "sequelize": "^6.35.2",
+    "socket.io": "^4.7.4",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

@@ -6,6 +6,7 @@ const Room = (sequelize, DataTypes) => {
       type: STRING(50),
       primaryKey: true,
       allowNull: false,
+      unique: true,
       comment: "방 고유번호",
     },
     room_name: {
@@ -22,12 +23,6 @@ const Room = (sequelize, DataTypes) => {
       type: STRING(100),
       allowNull: true,
       comment: "채널이미지 경로",
-    },
-    room_type: {
-      type: CHAR(1),
-      allowNull: false,
-      defaultValues: "A",
-      comment: "A: 일반문의, B: 게시글문의",
     },
     ref_id: {
       type: STRING(50),
@@ -47,9 +42,15 @@ const Room = (sequelize, DataTypes) => {
     },
     room_type: {
       type: CHAR(1),
-      allowNull: true,
-      defaultValues: "A",
+      allowNull: false,
+      defaultValues: "B",
       comment: "A: 공개방 B: 비밀방",
+    },
+    purpose_type: {
+      type: CHAR(1),
+      allowNull: false,
+      defaultValues: "A",
+      comment: "A: 일반문의, B: 게시글문의",
     },
     enter_password: {
       type: STRING(100),
@@ -61,7 +62,7 @@ const Room = (sequelize, DataTypes) => {
       allowNull: false,
       comment: "생성 유저 아이디",
     },
-    delete_member_id: {
+    delete_user_id: {
       type: STRING(50),
       allowNull: true,
       comment: "삭제 유저 아이디",

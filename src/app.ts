@@ -2,16 +2,21 @@ import express from "express";
 import cors from "cors";
 import "./config/envConfig.js";
 import db from "./models/index.js";
+import http from "http";
+import socket from "./socket/socket.js";
 import { errorHandler } from "./middleware/index.js";
 
 const { PORT } = process.env;
 const app = express();
+const server = http.createServer(app);
 const { log } = console;
 
 db.sequelize.sync().catch((e: any) => {
   console.log("!!!!!!");
   console.log(e);
 });
+
+socket(server);
 
 app.use(express.json(), express.urlencoded({ extended: true }));
 app.use(cors({
@@ -29,6 +34,7 @@ app.get("*", (req, res) => {
   res.send("<h1>404 Not Found</h1>");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   log(`Server Listening on port: ${PORT}!!`);
 });
+
