@@ -46,7 +46,7 @@ const socket = (server: http.Server) => {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress?.slice(7);
     const nickName = socket.handshake.auth.nickName;
     const user = await db.User.findOne({ where: { nick_name: nickName, latest_connection_id: socket.id }, raw: true });
-    socket.emit("first-connect", { msg: "scoket connected.", socketId: socket.id, id: user ? user.id : null });
+    socket.emit("first-connect", { msg: "scoket connected.", socketId: socket.id, id: user ? user.id : null, role: user ? user.role : null });
 
     log('\x1b[31m%s', `${nickName}`);
     // log(req.headers["x-forwarded-for"], req.socket.remoteAddress)
