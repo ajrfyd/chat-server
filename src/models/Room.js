@@ -38,7 +38,7 @@ const Room = (sequelize, DataTypes) => {
     current_state: {
       type: CHAR(1),
       allowNull: false,
-      comment: "A: 사용중(Opend) : 비사용(Closed)",
+      comment: "A: 사용중(Opend), B: 비사용(Closed)",
     },
     room_type: {
       type: CHAR(1),
@@ -57,11 +57,11 @@ const Room = (sequelize, DataTypes) => {
       allowNull: true,
       comment: "방 비밀번호",
     },
-    create_user_id: {
-      type: STRING(50),
-      allowNull: false,
-      comment: "생성 유저 아이디",
-    },
+    // create_user_id: {
+    //   type: STRING(50),
+    //   allowNull: false,
+    //   comment: "생성 유저 아이디",
+    // },
     delete_user_id: {
       type: STRING(50),
       allowNull: true,
@@ -77,6 +77,8 @@ const Room = (sequelize, DataTypes) => {
     timestamps: true,
     paranoid: true,
   });
+
+  room.associate = (model) => room.hasMany(model.Msg, { foreignKey: "roomId", target: "room_id", onDelete: "SET NULL" });
 
   return room;
 };

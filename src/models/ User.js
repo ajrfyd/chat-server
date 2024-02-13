@@ -11,6 +11,7 @@ const User = (sequelize, DataTypes) => {
     nick_name: {
       type: STRING(100),
       allowNull: true,
+      unique: true,
       comment: '닉네임',
     },
     profile_img_url: {
@@ -57,6 +58,7 @@ const User = (sequelize, DataTypes) => {
     timestamps: true
   });
 
+  user.associate = (model) => user.hasMany(model.Room, { foreignKey: "ownerId", target: "id", onDelete: "SET NULL" });
   return user;
 };
 

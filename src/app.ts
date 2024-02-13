@@ -4,7 +4,8 @@ import "./config/envConfig.js";
 import db from "./models/index.js";
 import http from "http";
 import socket from "./socket/socket.js";
-import { errorHandler } from "./middleware/index.js";
+import { errorHandler, initResponseObj } from "./middleware/index.js";
+import routes from "./routes/index.js";
 
 const { PORT } = process.env;
 const app = express();
@@ -21,8 +22,12 @@ socket(server);
 app.use(express.json(), express.urlencoded({ extended: true }));
 app.use(cors({
   methods: ["GET", "POST", "OPTIONS"],
-  origin: ["http://localhost:5173"]
+  origin: ["http://localhost:5173", "http://localhost:5555"]
 }));
+
+app.use(initResponseObj);
+app.use("/user", routes.user);
+app.use("/chat", routes.chat);
 
 app.get("/", (req, res) => {
   res.send("<h1>Welcome Chat server!!</h1>");

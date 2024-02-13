@@ -9,12 +9,12 @@ const Msg = (sequelize, DataTypes) => {
       allowNull: false,
       comment: '메세지 아이디',
     },
-    msg_type: {
-      type: CHAR(1),
-      allowNull: false,
-      comment: '메시지유형코드 1: 입장 1: 퇴장 3:공지',
-    },
-    message: {
+    // msg_type: {
+    //   type: CHAR(1),
+    //   allowNull: false,
+    //   comment: '메시지유형코드 1: 입장 1: 퇴장 3:공지',
+    // },
+    msg: {
       type: STRING(1000),
       allowNull: false,
       comment: '메세지',
