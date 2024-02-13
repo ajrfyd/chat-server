@@ -22,7 +22,11 @@ socket(server);
 app.use(express.json(), express.urlencoded({ extended: true }));
 app.use(cors({
   methods: ["GET", "POST", "OPTIONS"],
-  origin: ["http://localhost:5173", "http://localhost:5555"]
+  origin: [
+    "http://localhost:5173", 
+    "http://localhost:5555",
+    "https://k-log3943.netlify.app"
+  ]
 }));
 
 app.use(initResponseObj);
