@@ -12,7 +12,12 @@ const { log } = console;
 const socket = (server: http.Server) => {
   const io = new Server(server, {
     cors: {
-      origin: ["http://localhost:5173", "http://localhost:5500"],
+      origin: [
+        "http://localhost:5173", 
+        "http://localhost:5500",
+        "http://localhost:5555",
+        "https://k-log3943.netlify.app",
+      ],
       methods: ["GET", "POST", "OPTIONS"],
       credentials: true
     }
