@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
   config[NODE_ENV].database,
   config[NODE_ENV].username,
   config[NODE_ENV].password,
-  config[NODE_ENV]  
+  config[NODE_ENV]
 );
 
 db.sequelize = sequelize;
@@ -22,11 +22,10 @@ db.Room = Room(sequelize, Sequelize);
 db.Msg = Msg(sequelize, Sequelize);
 db.User = User(sequelize, Sequelize);
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
-
 
 export default db;

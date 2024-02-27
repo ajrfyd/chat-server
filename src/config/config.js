@@ -1,8 +1,12 @@
 // const dotenv = require("dotenv").config();
 
-const { 
-  DEV_DB_USERNAME, DEV_DB_NAME, DEV_DB_PASSWORD,
-  PROD_DB_USERNAME, PROD_DB_NAME, PROD_DB_PASSWORD
+const {
+  DEV_DB_USERNAME,
+  DEV_DB_NAME,
+  DEV_DB_PASSWORD,
+  PROD_DB_USERNAME,
+  PROD_DB_NAME,
+  PROD_DB_PASSWORD,
 } = process.env;
 
 const config = {
@@ -13,7 +17,11 @@ const config = {
     host: "127.0.0.1",
     dialect: "mysql",
     timezone: "+09:00",
-    logging: false
+    dialectOptions: {
+      dateStrings: true,
+      typeCast: true,
+    },
+    logging: false,
   },
   production: {
     username: PROD_DB_USERNAME,
@@ -22,8 +30,12 @@ const config = {
     host: "127.0.0.1",
     dialect: "mysql",
     timezone: "+09:00",
-    logging: false
-  }
+    dialectOptions: {
+      dateStrings: true,
+      typeCast: true,
+    },
+    logging: false,
+  },
 };
 
 export default config;
