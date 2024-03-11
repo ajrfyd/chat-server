@@ -66,7 +66,7 @@ const socket = (server: http.Server) => {
       role: user ? user.role : null,
     });
 
-    log("\x1b[31m%s", `${nickName}`, `${Date.now()}`);
+    log("\x1b[31m%s", `${nickName}`, `${new Date(Date.now())}`);
     // log(req.headers["x-forwarded-for"], req.socket.remoteAddress)
     // socket.abc = "1";
     // log(socket.connected);
